@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Drawing App</title>
+  </head>
+  <body>
+    <h2 id="h2">Active Color</h2>
+    <h2 id="h3">Black</h2>
+    <h2 id="h4">Tip: Use White Color to Erase</h2>
+    <canvas id="myhouse" width="800" height="600"></canvas>
+    <button class="buttons" id="Violet"></button>
+    <button class="buttons" id="Red"></button>
+    <button class="buttons" id="Pink"></button>
+    <button class="buttons" id="Blue"></button>
+    <button class="buttons" id="Yellow"></button>
+    <button class="buttons" id="Brown"></button>
+    <button class="buttons" id="Purple"></button>
+    <button class="buttons" id="Black"></button>
+    <button class="buttons" id="White"></button>
+    <button class="buttons" id="SkyBlue"></button>
+    <button class="buttons" id="Orange"></button>
+
+    <button id="Line">Line</button>
+    <button id="circle">Circle</button>
+    <button id="Rectangle">Rectangle</button>
+
+    <select id="FillColor" onchange="FillColor()">
+      <option disabled selected>--Fill Color--</option>
+      <option>White</option>
+      <option style="background-color: violet">Violet</option>
+      <option style="background-color: red">Red</option>
+      <option style="background-color: pink">Pink</option>
+      <option style="background-color: blue" id="optionblue">Blue</option>
+      <option style="background-color: black" id="optionblack">Black</option>
+      <option style="background-color: yellow">Yellow</option>
+      <option style="background-color: brown">Brown</option>
+      <option style="background-color: purple">Purple</option>
+
+      <option style="background-color: orange">Orange</option>
+      <option style="background-color: skyblue">SkyBlue</option>
+    </select>
+
+    <button id="default">Default</button>
+    <button id="erase-all">Erase All</button>
+    <p id="p1">Brush Size:&nbsp;</p>
+    <p id="p9">Thickness:&nbsp;</p>
+    <p id="p6"></p>
+    <p id="p12">2</p>
+    <input id="range" type="range" min="1" max="40" value="2" class="slider" />
+    <input id="range2" type="range" min="1" max="40" value="1" class="slider" />
+  </body>
+  <script src="java.js"></script>
+</html>
