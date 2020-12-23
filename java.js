@@ -72,6 +72,7 @@ document
         ctx.lineWidth = lineWidth;
 
         ctx.rect(x1, y1, 3, 3);
+
         ctx.fillStyle = fillColor;
         ctx.fill();
       } else if (mode === "circle") {
@@ -180,6 +181,7 @@ function redraw() {
         ctx.stroke();
       } else if (element.mode === "circle") {
         ctx.beginPath();
+
         ctx.strokeStyle = element.Color;
 
         ctx.lineWidth = element.lineWidth;
@@ -190,12 +192,14 @@ function redraw() {
           element.startAngle,
           element.endAngle
         );
+
         ctx.fillStyle = element.fillColor;
         ctx.fill();
         ctx.closePath();
         ctx.stroke();
       } else if (element.mode === "rectangle") {
         ctx.beginPath();
+
         ctx.strokeStyle = element.Color;
 
         ctx.lineWidth = element.lineWidth;
@@ -226,9 +230,11 @@ document
 
       if (mode === "rectangle") {
         ctx.beginPath();
+
         ctx.strokeStyle = color;
         ctx.lineWidth = lineWidth;
         ctx.rect(prevx, prevy, xdiff, ydiff);
+
         ctx.fillStyle = fillColor;
         ctx.fill();
         ctx.closePath();
@@ -240,6 +246,7 @@ document
           width: ydiff,
           lineWidth: lineWidth,
           fillColor: fillColor,
+
           Color: color,
           redraw: true,
           mode: "rectangle",
@@ -247,10 +254,12 @@ document
         createdDrawingscounter++;
       } else if (mode === "circle") {
         ctx.beginPath();
+
         ctx.strokeStyle = color;
 
         ctx.lineWidth = lineWidth;
         ctx.arc(prevx, prevy, xdiff, 0, 2 * Math.PI);
+
         ctx.fillStyle = fillColor;
         ctx.fill();
         ctx.closePath();
@@ -286,6 +295,10 @@ document
       }
 
       mouseMoved = false;
+    } else if (event.button === 2) {
+      createdDrawings[createdDrawingscounter - 1].redraw = false;
+      createdDrawingscounter--;
+      redraw();
     }
   });
 
@@ -369,9 +382,14 @@ document.addEventListener("keyup", function (event) {
 
 function FillColor() {
   fillColor = document.getElementById("FillColor").value;
-  document.getElementById(
-    "FillColor"
-  ).style.backgroundColor = document.getElementById("FillColor").value;
+
+  if (document.getElementById("FillColor").value !== "none") {
+    document.getElementById(
+      "FillColor"
+    ).style.backgroundColor = document.getElementById("FillColor").value;
+  } else {
+    fillColor = "white";
+  }
 }
 
 function ThicknessMode() {
