@@ -166,6 +166,8 @@ document
   });
 
 function redraw() {
+  //var reversedItems = createdDrawings.map((item) => item).reverse();
+  //console.log(reversedItems);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   disabled = false;
   createdDrawings.map((element) => {
@@ -181,7 +183,7 @@ function redraw() {
         ctx.stroke();
       } else if (element.mode === "circle") {
         ctx.beginPath();
-
+        ctx.globalCompositeOperation = "multiply";
         ctx.strokeStyle = element.Color;
 
         ctx.lineWidth = element.lineWidth;
@@ -199,7 +201,7 @@ function redraw() {
         ctx.stroke();
       } else if (element.mode === "rectangle") {
         ctx.beginPath();
-
+        ctx.globalCompositeOperation = "multiply";
         ctx.strokeStyle = element.Color;
 
         ctx.lineWidth = element.lineWidth;
@@ -230,7 +232,7 @@ document
 
       if (mode === "rectangle") {
         ctx.beginPath();
-
+        ctx.globalCompositeOperation = "multiply";
         ctx.strokeStyle = color;
         ctx.lineWidth = lineWidth;
         ctx.rect(prevx, prevy, xdiff, ydiff);
@@ -254,7 +256,7 @@ document
         createdDrawingscounter++;
       } else if (mode === "circle") {
         ctx.beginPath();
-
+        ctx.globalCompositeOperation = "multiply";
         ctx.strokeStyle = color;
 
         ctx.lineWidth = lineWidth;
@@ -296,9 +298,11 @@ document
 
       mouseMoved = false;
     } else if (event.button === 2) {
-      createdDrawings[createdDrawingscounter - 1].redraw = false;
-      createdDrawingscounter--;
-      redraw();
+      if (mousepressed === false) {
+        createdDrawings[createdDrawingscounter - 1].redraw = false;
+        createdDrawingscounter--;
+        redraw();
+      }
     }
   });
 
