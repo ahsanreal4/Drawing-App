@@ -11,7 +11,12 @@
     <h2 id="h2">Active Color</h2>
     <h2 id="h3">Black</h2>
     <h2 id="h4">Tip: Use White Color to Erase</h2>
-    <canvas id="myhouse" width="800" height="600"></canvas>
+    <canvas
+      id="myhouse"
+      width="800"
+      height="600"
+      oncontextmenu="return false;"
+    ></canvas>
     <button class="buttons" id="Violet"></button>
     <button class="buttons" id="Red"></button>
     <button class="buttons" id="Pink"></button>
@@ -30,6 +35,7 @@
 
     <select id="FillColor" onchange="FillColor()">
       <option disabled selected>--Fill Color--</option>
+
       <option>White</option>
       <option style="background-color: violet">Violet</option>
       <option style="background-color: red">Red</option>
