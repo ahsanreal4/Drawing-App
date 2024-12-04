@@ -44,11 +44,19 @@ for (let i = 0; i < elements.length; i++) {
 document
   .getElementById("myhouse")
   .addEventListener("mousedown", function (event) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width; // Account for horizontal scaling
+    const scaleY = canvas.height / rect.height; // Account for vertical scaling
+
+    // Get mouse position relative to the canvas
+    const x = (event.clientX - rect.left) * scaleX;
+    const y = (event.clientY - rect.top) * scaleY;
+
     if (event.button === 0) {
       disabled = false;
       mousepressed = true;
-      x1 = event.layerX;
-      y1 = event.layerY;
+      x1 = x;
+      y1 = y;
       prevx = x1;
       prevy = y1;
       ctx.beginPath();
@@ -94,13 +102,21 @@ document
 document
   .getElementById("myhouse")
   .addEventListener("mousemove", function (event) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width; // Account for horizontal scaling
+    const scaleY = canvas.height / rect.height; // Account for vertical scaling
+
+    // Get mouse position relative to the canvas
+    const x = (event.clientX - rect.left) * scaleX;
+    const y = (event.clientY - rect.top) * scaleY;
+
     if (event.button === 0) {
       if (mousepressed === true) {
         //x2 = event.screenX - 355;
         //y2 = event.screenY - 210;
         redraw();
-        x2 = event.layerX;
-        y2 = event.layerY;
+        x2 = x;
+        y2 = y;
         if (mode === "default") {
           ctx.beginPath();
 
@@ -337,6 +353,7 @@ document.getElementById("range2").addEventListener("change", function () {
 document
   .getElementById("circle")
   .addEventListener("mousedown", function (event) {
+    toggleButtonActiveClass(event.target);
     mode = "circle";
     thicknessMode = true;
     ThicknessMode();
@@ -344,6 +361,7 @@ document
 document
   .getElementById("default")
   .addEventListener("mousedown", function (event) {
+    toggleButtonActiveClass(event.target);
     mode = "default";
     thicknessMode = false;
     ThicknessMode();
@@ -352,12 +370,14 @@ document
 document
   .getElementById("Rectangle")
   .addEventListener("mousedown", function (event) {
+    toggleButtonActiveClass(event.target);
     mode = "rectangle";
     thicknessMode = true;
     ThicknessMode();
   });
 
 document.getElementById("Line").addEventListener("mousedown", function (event) {
+  toggleButtonActiveClass(event.target);
   mode = "line";
   thicknessMode = false;
   ThicknessMode();
@@ -388,9 +408,8 @@ function FillColor() {
   fillColor = document.getElementById("FillColor").value;
 
   if (document.getElementById("FillColor").value !== "none") {
-    document.getElementById(
-      "FillColor"
-    ).style.backgroundColor = document.getElementById("FillColor").value;
+    document.getElementById("FillColor").style.backgroundColor =
+      document.getElementById("FillColor").value;
   } else {
     fillColor = "white";
   }
@@ -408,4 +427,19 @@ function ThicknessMode() {
     document.getElementById("range2").style.display = "none";
     thicknessMode = true;
   }
+}
+
+function removeAllActiveButtonClasses() {
+  const buttons = document.getElementsByClassName("action-button");
+
+  for (const button of buttons) {
+    button.classList.remove("active-button");
+  }
+}
+
+function toggleButtonActiveClass(button) {
+  if (!button) return;
+
+  removeAllActiveButtonClasses();
+  button.classList.toggle("active-button");
 }

@@ -8,56 +8,75 @@
     <title>Drawing App</title>
   </head>
   <body>
-    <h2 id="h2">Active Color</h2>
-    <h2 id="h3">Black</h2>
-    <h2 id="h4">Tip: Use White Color to Erase</h2>
-    <canvas
-      id="myhouse"
-      width="800"
-      height="600"
-      oncontextmenu="return false;"
-    ></canvas>
-    <button class="buttons" id="Violet"></button>
-    <button class="buttons" id="Red"></button>
-    <button class="buttons" id="Pink"></button>
-    <button class="buttons" id="Blue"></button>
-    <button class="buttons" id="Yellow"></button>
-    <button class="buttons" id="Brown"></button>
-    <button class="buttons" id="Purple"></button>
-    <button class="buttons" id="Black"></button>
-    <button class="buttons" id="White"></button>
-    <button class="buttons" id="SkyBlue"></button>
-    <button class="buttons" id="Orange"></button>
+    <div class="container">
+      <div class="colors-container">
+        <select id="FillColor" onchange="FillColor()">
+          <option disabled selected>--Fill Color--</option>
 
-    <button id="Line">Line</button>
-    <button id="circle">Circle</button>
-    <button id="Rectangle">Rectangle</button>
+          <option>White</option>
+          <option style="background-color: violet">Violet</option>
+          <option style="background-color: red">Red</option>
+          <option style="background-color: pink">Pink</option>
+          <option style="background-color: blue" id="optionblue">Blue</option>
+          <option style="background-color: black" id="optionblack">
+            Black
+          </option>
+          <option style="background-color: yellow">Yellow</option>
+          <option style="background-color: brown">Brown</option>
+          <option style="background-color: purple">Purple</option>
 
-    <select id="FillColor" onchange="FillColor()">
-      <option disabled selected>--Fill Color--</option>
+          <option style="background-color: orange">Orange</option>
+          <option style="background-color: skyblue">SkyBlue</option>
+        </select>
 
-      <option>White</option>
-      <option style="background-color: violet">Violet</option>
-      <option style="background-color: red">Red</option>
-      <option style="background-color: pink">Pink</option>
-      <option style="background-color: blue" id="optionblue">Blue</option>
-      <option style="background-color: black" id="optionblack">Black</option>
-      <option style="background-color: yellow">Yellow</option>
-      <option style="background-color: brown">Brown</option>
-      <option style="background-color: purple">Purple</option>
+        <div>
+          <button class="buttons" id="Violet"></button>
+          <button class="buttons" id="Red"></button>
+          <button class="buttons" id="Pink"></button>
+          <button class="buttons" id="Blue"></button>
+          <button class="buttons" id="Yellow"></button>
+          <button class="buttons" id="Brown"></button>
+          <button class="buttons" id="Purple"></button>
+          <button class="buttons" id="Black"></button>
+          <button class="buttons" id="White"></button>
+          <button class="buttons" id="SkyBlue"></button>
+          <button class="buttons" id="Orange"></button>
+        </div>
+      </div>
 
-      <option style="background-color: orange">Orange</option>
-      <option style="background-color: skyblue">SkyBlue</option>
-    </select>
+      <div class="canvas-container">
+        <div class="canvas-heading-container">
+          <h3 id="h2">Active Color:&nbsp;<span id="h3">Black</span></h2>
+        </div>
+        <canvas id="myhouse" oncontextmenu="return false;"></canvas>
+      </div>
+      <div class="action-buttons-container">
+        <button class="action-button" id="Line">Line</button>
+        <button class="action-button" id="circle">Circle</button>
+        <button class="action-button" id="Rectangle">Rectangle</button>
 
-    <button id="default">Default</button>
-    <button id="erase-all">Erase All</button>
-    <p id="p1">Brush Size:&nbsp;</p>
-    <p id="p9">Thickness:&nbsp;</p>
-    <p id="p6"></p>
-    <p id="p12">2</p>
-    <input id="range" type="range" min="1" max="40" value="2" class="slider" />
-    <input id="range2" type="range" min="1" max="40" value="1" class="slider" />
+        <button class="action-button active-button" id="default">Default</button>
+        <button class="action-button" id="erase-all">Erase All</button>
+        <p id="p1">Brush Size:&nbsp; <span id="p6">2</span></p>
+        <input
+          id="range"
+          type="range"
+          min="1"
+          max="40"
+          value="2"
+          class="slider"
+        />
+        <p id="p9">Thickness:&nbsp;<span id="p12">2</span></p>
+        <input
+          id="range2"
+          type="range"
+          min="1"
+          max="40"
+          value="1"
+          class="slider"
+        />
+      </div>
+    </div>
   </body>
   <script src="java.js"></script>
 </html>
